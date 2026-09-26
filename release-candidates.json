@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "com.local.terminal-emulator",
+  "publisher": "local",
+  "version": "0.1.10",
+  "targets": [
+    {
+      "target": "windows-x64",
+      "url": "https://github.com/yiqiui/terminal-emulator/releases/download/v0.1.10/com.local.terminal-emulator-0.1.10-windows-x64.dbxp",
+      "sha256": "056a60e44b2273bb4ddb990c7597c596aeb251f74aff95b4779023de4df9f4f7",
+      "size": 799756
+    }
+  ]
+}

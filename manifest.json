@@ -5,7 +5,7 @@
   "name": "Terminal Emulator",
   "icon": "assets/plugin.svg",
   "version": "0.1.10",
-  "publisher": "local",
+  "publisher": "yiqiui",
   "description": "Run a local shell in a DBX workbench with framed PTY input and output.",
   "source": "https://github.com/nyakang/nyaterm",
   "homepage": "https://github.com/nyakang/nyaterm",
