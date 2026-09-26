@@ -1,0 +1,101 @@
+{
+  "$schema": "../manifest.schema.json",
+  "manifest_version": 1,
+  "id": "com.local.terminal-emulator",
+  "name": "Terminal Emulator",
+  "icon": "assets/plugin.svg",
+  "version": "0.1.10",
+  "publisher": "local",
+  "description": "Run a local shell in a DBX workbench with framed PTY input and output.",
+  "source": "https://github.com/nyakang/nyaterm",
+  "homepage": "https://github.com/nyakang/nyaterm",
+  "engines": {
+    "dbx": ">=0.5.68",
+    "host_api": "^1.0"
+  },
+  "permissions": [
+    "host.events",
+    "host.binary",
+    "host.workbench",
+    "host.storage"
+  ],
+  "entrypoints": {
+    "backend": {
+      "executable": "bin/dbx-terminal-emulator",
+      "transport": "stdio-framed"
+    },
+    "ui": {
+      "root": "ui",
+      "entry": "ui/index.html"
+    }
+  },
+  "contributions": [
+    {
+      "type": "connection-provider",
+      "id": "com.local.terminal-emulator.ssh",
+      "label": "SSH 服务器",
+      "icon": "assets/plugin.svg",
+      "database_type": "ssh",
+      "description": "支持密码、密钥或 SSH Agent 交互认证的 SSH 连接。",
+      "fields": [
+        {
+          "key": "display_name",
+          "label": "连接名称",
+          "type": "text",
+          "default": "SSH 服务器",
+          "binding": "name",
+          "required": true
+        },
+        {
+          "key": "host",
+          "label": "主机",
+          "type": "text",
+          "binding": "host",
+          "required": true
+        },
+        {
+          "key": "port",
+          "label": "端口",
+          "type": "number",
+          "default": 22,
+          "binding": "port",
+          "required": true
+        },
+        {
+          "key": "user",
+          "label": "用户名",
+          "type": "text",
+          "binding": "config"
+        }
+      ],
+      "workbench": "com.local.terminal-emulator.workbench",
+      "capabilities": [
+        "test",
+        "connect",
+        "disconnect"
+      ]
+    },
+    {
+      "type": "workbench",
+      "id": "com.local.terminal-emulator.workbench",
+      "label": "Terminal Emulator",
+      "description": "A local terminal emulator workbench with a persistent PTY."
+    }
+  ],
+  "localizations": {
+    "zh-CN": {
+      "name": "Terminal Emulator",
+      "description": "在 DBX 工作台中运行本地 Shell，通过 PTY 收发输入和输出。",
+      "contributions": {
+        "com.local.terminal-emulator.workbench": {
+          "label": "Terminal Emulator",
+          "description": "带持久 PTY 的本地终端工作台。"
+        },
+        "com.local.terminal-emulator.ssh": {
+          "label": "SSH 服务器",
+          "description": "支持密码、密钥或 SSH Agent 交互认证的 SSH 连接。"
+        }
+      }
+    }
+  }
+}
